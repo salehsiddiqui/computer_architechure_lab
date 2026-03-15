@@ -2,4 +2,4 @@
 run/*
 
 # But keep the Makefile
-!run/Makefile
+!run/makefile
