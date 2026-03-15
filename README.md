@@ -20,6 +20,7 @@ project/
 * `run/` → Used to compile and run simulations.
 
 ### NOTE: Replace project with your local repository name.
+
 ## Running Simulations (Linux)
 
 A `Makefile` is provided in the `run/` directory to simplify compiling and running simulations using ModelSim.
@@ -84,3 +85,13 @@ This removes temporary simulation files such as:
 * Only the `Makefile` is tracked inside the `run/` directory.
 
 ---
+
+
+## Running Simulations (Windows)
+In the `run` directory jsut double click the `run.bat` file.
+Make sure to replace your testbench module with alu_tb.
+Make sure to have Questa Sim installed and added to your path on windows.
+
+
+# NOTE:
+Make sure to select the appropriate Lab Folder in the path as well both for Linux and Windows
