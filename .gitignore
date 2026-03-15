@@ -3,3 +3,5 @@ run/*
 
 # But keep the Makefile
 !run/makefile
+!run/run.do
+!run/run.bat
