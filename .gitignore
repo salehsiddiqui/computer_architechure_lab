@@ -6,3 +6,4 @@ local/*
 !run/makefile
 !run/run.do
 !run/run.bat
+!run/clean.bat

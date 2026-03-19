@@ -1,7 +1,7 @@
 # Configurable Variables
-set TOP immgen_tb
-set SRC_DIR ../Lab3/src
-set TB_DIR ../Lab3/testbench
+set TOP pc_tb
+set SRC_DIR ../Lab4/src
+set TB_DIR ../Lab4/testbench
 
 # Setup Library
 vlib work
