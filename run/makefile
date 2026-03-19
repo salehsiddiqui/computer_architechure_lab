@@ -1,28 +1,29 @@
-# ModelSim commands
-VLIB = vlib
-VLOG = vlog
-VSIM = vsim
-
 # directories
 SRC_DIR = ../Lab2/src
 TB_DIR = ../Lab2/sim
 
-# files
-SRC_FILES = $(SRC_DIR)/*.sv
-TB_FILES = $(TB_DIR)/*.sv
-
 # testbench module name
 TOP = alu_tb
 
-all: compile run
+all: compile simulate run
 
 compile:
-	$(VLIB) work
-	$(VLOG) $(SRC_FILES)
-	$(VLOG) $(TB_FILES)
+	vlib work
+	vlog $(SRC_DIR)/*.sv
+	vlog $(TB_DIR)/*.sv
+
+simulate:
+	vsim -voptargs=+acc work.$(TOP)
+
+wave:
+	# Add all signals automatically
+	# add wave -r sim:/$(TOP)/*
+
+	# OR if DUT exists inside TB
+	add wave -r sim:/$(TOP)/dut/*
 
 run:
-	$(VSIM) $(TOP) -do "add wave *; run -all"
+	run -all
 
 clean:
 	rm -rf work transcript vsim.wlf
