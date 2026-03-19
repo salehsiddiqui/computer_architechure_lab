@@ -1,5 +1,6 @@
 # Ignore everything in run folder
 run/*
+local/*
 
 # But keep the Makefile
 !run/makefile
