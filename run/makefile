@@ -1,6 +1,6 @@
 # directories
 SRC_DIR = ../Lab2/src
-TB_DIR = ../Lab2/sim
+TB_DIR = ../Lab2/testbench
 
 # testbench module name
 TOP = alu_tb
