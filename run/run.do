@@ -20,6 +20,7 @@ vsim -voptargs=+acc work.$TOP
 
 # OR if DUT exists inside TB
 add wave -r sim:/$TOP/dut/*
+# add wave -r sim:/$TOP/dut/mem # uncomment it when running regiter_file_tb to view register_file contents.
 
 # Run
 run -all
