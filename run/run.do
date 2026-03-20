@@ -1,26 +1,25 @@
 # Configurable Variables
-set TOP pc_tb
+set TOP register_file_tb
 set SRC_DIR ../Lab4/src
 set TB_DIR ../Lab4/testbench
+set QUESTA_DIR ../Lab4/questa
 
-# Setup Library
-vlib work
+# Create the directory if it doesn't exist
+file mkdir $QUESTA_DIR
 
-# Compile
-vlog $SRC_DIR/*.sv
-vlog $TB_DIR/*.sv
+# Setup Library inside the questa folder
+vlib $QUESTA_DIR/work
+vmap work $QUESTA_DIR/work
+
+# Compile (pointing to the work library in the questa folder)
+vlog -work work $SRC_DIR/*.sv
+vlog -work work $TB_DIR/*.sv
 
 # Simulate
-vsim -voptargs=+acc work.$TOP
+vsim -voptargs=+acc -lib $QUESTA_DIR/work $TOP
 
-# Waves (Generic)
-
-# Add all signals automatically
-# add wave -r sim:/$TOP/*
-
-# OR if DUT exists inside TB
+# Waves
 add wave -r sim:/$TOP/dut/*
-# add wave -r sim:/$TOP/dut/mem # uncomment it when running regiter_file_tb to view register_file contents.
 
 # Run
 run -all

@@ -1,7 +1,11 @@
 # Ignore everything in run folder
 run/*
 local/*
-
+questa/
+vivado/
+*.mpf
+*.wlf
+transcript
 # But keep the Makefile
 !run/makefile
 !run/run.do
