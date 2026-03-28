@@ -1,10 +1,11 @@
 `timescale 1ns/1ps
 
-module pc_tb;
+module program_counter_tb;
 
     logic clk;
     logic reset;
     logic pc_write;
+    logic pc_src;
     logic [31:0] load_value;
     logic [31:0] address;
 
@@ -13,6 +14,7 @@ module pc_tb;
         .clk(clk),
         .reset(reset),
         .pc_write(pc_write),
+        .pc_src(pc_src),
         .load_value(load_value),
         .address(address)
     );
@@ -29,7 +31,7 @@ module pc_tb;
                 $display("Expected: %h, Got: %h", expected, address);
                 $stop;
             end else begin
-                $display("✅ PASS at time %0t | Address = %h", $time, address);
+                $display("PASS at time %0t | Address = %h", $time, address);
             end
         end
     endtask
@@ -39,6 +41,7 @@ module pc_tb;
         clk = 0;
         reset = 1;
         pc_write = 0;
+        pc_src = 0;
         load_value = 0;
 
         $display("Starting Program Counter Test...");
@@ -54,6 +57,7 @@ module pc_tb;
         // ---------------------------
         reset = 0;
 
+        pc_write = 1;
         @(posedge clk); check(32'h00000004);
         @(posedge clk); check(32'h00000008);
         @(posedge clk); check(32'h0000000C);
@@ -62,6 +66,7 @@ module pc_tb;
         // Test 3: Load (Jump)
         // ---------------------------
         pc_write = 1;
+        pc_src = 1;
         load_value = 32'h00000064; // 100
 
         @(posedge clk);
@@ -70,7 +75,8 @@ module pc_tb;
         // ---------------------------
         // Test 4: Continue increment
         // ---------------------------
-        pc_write = 0;
+        pc_write = 1;
+        pc_src = 0;
 
         @(posedge clk); check(32'h00000068);
         @(posedge clk); check(32'h0000006C);
@@ -79,11 +85,13 @@ module pc_tb;
         // Test 5: Another jump
         // ---------------------------
         pc_write = 1;
+        pc_src = 1;
         load_value = 32'h00000020;
 
         @(posedge clk);
         check(32'h00000020);
         pc_write = 0;
+        pc_src = 0;
 
         repeat(3) @(posedge clk);
 
