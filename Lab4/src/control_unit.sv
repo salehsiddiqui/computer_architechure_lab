@@ -6,7 +6,8 @@ module control_unit(
     output logic       pc_src,
     output logic       reg_write,
     output logic       imm_sel,
-    output logic       mem_to_reg
+    output logic       mem_to_reg,
+    output logic       mem_write
 
 );
 
@@ -24,6 +25,7 @@ module control_unit(
         pc_src = 0; // Defualt no jump
         imm_sel = 0; // Defualt reg2 is selected.
         mem_to_reg = 0; // defulat no write from mem to reg
+        mem_write = 0;
 
         case (opcode)
             
@@ -32,6 +34,7 @@ module control_unit(
                 aluop    = 2'b10;
                 imm_sel = 0;
                 mem_to_reg = 0;
+                mem_write = 0;
             end
 
             7'b0010011: begin // I-Type arithmetic
@@ -43,7 +46,17 @@ module control_unit(
             7'b0000011: begin // Load instruction I-Type
                 reg_write  = 1;
                 aluop    = 2'b00;
+                imm_sel = 1;
                 mem_to_reg = 1; // memory to reg
+                mem_write = 0;
+            end
+
+            7'b0100011: begin // Store instruction I-Type
+                reg_write  = 0;
+                aluop    = 2'b00;
+                imm_sel = 1;
+                mem_to_reg = 0; // memory to reg
+                mem_write = 1;
             end
 
             default: begin
@@ -53,6 +66,7 @@ module control_unit(
                 pc_src    = 0;
                 imm_sel   = 0;
                 mem_to_reg = 0;
+                mem_write = 0;
             end
 
         endcase
