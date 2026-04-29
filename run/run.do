@@ -20,6 +20,9 @@ vsim -voptargs=+acc -lib $QUESTA_DIR/work $TOP
 
 # Waves
 add wave -r sim:/$TOP/dut/*
+add wave -r sim:/$TOP/dut/mem_d
+add wave -r sim:/$TOP/dut/mem_i
+add wave -r sim:/$TOP/dut/reg_file
 
 # Run
 run -all
