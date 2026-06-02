@@ -1,6 +1,7 @@
 # Ignore everything in run folder
 run/*
 local/*
+Single_Cycle/*
 questa/
 vivado/
 *.mpf
