@@ -2,6 +2,7 @@
 run/*
 local/*
 Single_Cycle/*
+Three_Stage_Pipeline/*
 questa/
 vivado/
 *.mpf
