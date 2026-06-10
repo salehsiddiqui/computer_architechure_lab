@@ -5,6 +5,8 @@ module top_fpga (
     output logic segA, segB, segC, segD, segE, segF, segG
 );
 
+
+    logic [3:0] disp_nums [7:0];
     
     sim_dis_my display_inst (
         .clk(clk),
@@ -45,7 +47,6 @@ module top_fpga (
     );
 
     // 3. Format values for unpacked array input in sim_dis
-    logic [3:0] disp_nums [7:0];
     assign disp_nums[0] = val3[3:0]; // Show lower nibble of the array
     assign disp_nums[1] = val2[3:0];
     assign disp_nums[2] = val1[3:0];
