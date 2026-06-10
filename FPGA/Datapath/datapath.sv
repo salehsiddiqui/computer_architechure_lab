@@ -37,8 +37,8 @@ module datapath (
 
     imem #(
         .DWIDTH(DWIDTH),
-        .AWIDTH(16),  
-        .DEPTH(65536), 
+        .AWIDTH(9),  
+        .DEPTH(1 << 9), 
         .MIF_HEX("imem.hex")   
     ) instr_mem (
         .clk(clk),
@@ -258,8 +258,8 @@ module datapath (
 
     dmem #(
         .DWIDTH(DWIDTH),
-        .AWIDTH(16),
-        .DEPTH(65536),
+        .AWIDTH(9),
+        .DEPTH(1 << 9),
         .MIF_HEX("dmem.hex")
     ) data_mem (
         .clk  (clk),

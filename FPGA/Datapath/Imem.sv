@@ -1,8 +1,8 @@
 // Multi-port RAM with two asynchronous-read ports, one synchronous-write port
 module imem(q1, addr1, clk, reset);
   parameter DWIDTH = 32;  // Data width
-  parameter AWIDTH = 16;  // Address width
-  parameter DEPTH =  65536; //(1 << AWIDTH); // Memory depth
+  parameter AWIDTH = 9;  // Address width
+  parameter DEPTH =  (1 << AWIDTH); // Memory depth
   parameter MIF_HEX = "imem.hex";
   parameter MIF_BIN = "";
   input clk;
