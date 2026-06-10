@@ -1,4 +1,4 @@
- module sim_dis (
+ module sim_dis_my (
         input  logic [3:0] num [7:0],
         input  logic reset, clk,
         output logic an0, an1, an2, an3, an4, an5, an6, an7,

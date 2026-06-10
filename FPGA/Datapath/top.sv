@@ -6,7 +6,7 @@ module top_fpga (
 );
 
     
-    sim_dis display_inst (
+    sim_dis_my display_inst (
         .clk(clk),
         .reset(reset),
         .num(disp_nums),
