@@ -1,7 +1,7 @@
 // Multi-port RAM with two asynchronous-read ports, one synchronous-write port
 module dmem(d0, addr0, we0, q1, addr1, clk, reset);
   parameter DWIDTH = 32;  // Data width
-  parameter AWIDTH = 9;   // Address width
+  parameter AWIDTH = 8;   // Address width
   parameter DEPTH =  (1 << AWIDTH); // Memory depth
   parameter MIF_HEX = "dmem.hex";
   parameter MIF_BIN = "";
@@ -39,10 +39,10 @@ module dmem(d0, addr0, we0, q1, addr1, clk, reset);
   always @(posedge clk or posedge reset) begin
   // always @(posedge clk) begin
     if (reset)begin
-      memory[256] = 32'h2; 
-      memory[260] = 32'h4;
-      memory[264] = 32'h1;
-      memory[268] = 32'h3;
+      memory[0] = 32'h2; 
+      memory[4] = 32'h4;
+      memory[8] = 32'h1;
+      memory[12] = 32'h3;
     end
     else if (we0)
       // mem_d[addr0] <= d0;

@@ -29,7 +29,8 @@ module register_file(d0, addr0, we0, q1, addr1, q2, addr2, clk);
 
 
   // Write (synchronous)
-  always @(posedge clk) begin
+  // always @(posedge clk) begin
+  always @(negedge clk) begin
     if (we0 && addr0 != 5'd0)
       // reg_file[addr0] <= d0;
       Registers[addr0] <= d0;

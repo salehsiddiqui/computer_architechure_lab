@@ -37,8 +37,8 @@ module datapath (
 
     imem #(
         .DWIDTH(DWIDTH),
-        .AWIDTH(9),  
-        .DEPTH(1 << 9), 
+        .AWIDTH(8),  
+        .DEPTH(1 << 8), 
         .MIF_HEX("imem.hex")   
     ) instr_mem (
         .clk(clk),
@@ -112,7 +112,7 @@ module datapath (
     register_file rf (
         .clk  (clk),
         .d0   (write_back_data),
-        .addr0(rd_idex),           // From MEM/WB stage
+        .addr0(rd_memwb),           // From MEM/WB stage
         .we0  (reg_write_memwb),    // From MEM/WB stage
         .addr1(rs1_idex),
         .q1   (reg_data1),
@@ -258,8 +258,8 @@ module datapath (
 
     dmem #(
         .DWIDTH(DWIDTH),
-        .AWIDTH(9),
-        .DEPTH(1 << 9),
+        .AWIDTH(8),
+        .DEPTH(1 << 8),
         .MIF_HEX("dmem.hex")
     ) data_mem (
         .clk  (clk),
@@ -317,10 +317,10 @@ module datapath (
     end
 
     always_comb begin
-        val0 = data_mem.memory[256];
-        val1 = data_mem.memory[260];
-        val2 = data_mem.memory[264];
-        val3 = data_mem.memory[268];
+        val0 = data_mem.memory[0];
+        val1 = data_mem.memory[4];
+        val2 = data_mem.memory[8];
+        val3 = data_mem.memory[12];
     end
 
 endmodule
