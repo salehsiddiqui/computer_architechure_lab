@@ -6,6 +6,17 @@ module top_fpga (
 );
 
     
+    sim_dis display_inst (
+        .clk(clk),
+        .reset(reset),
+        .num(disp_nums),
+        .an0(an0), .an1(an1), .an2(an2), .an3(an3),
+        .an4(an4), .an5(an5), .an6(an6), .an7(an7),
+        .segA(segA), .segB(segB), .segC(segC), .segD(segD),
+        .segE(segE), .segF(segF), .segG(segG)
+    );
+
+
     logic clk_cpu;
     logic [26:0] clk_div;
     always_ff @(posedge clk or posedge reset) begin
@@ -44,16 +55,6 @@ module top_fpga (
     assign disp_nums[6] = 4'd0;
     assign disp_nums[7] = 4'd0;
 
-    // 4. Instantiate Display Driver running on the fast 100 MHz clock
-    sim_dis display_inst (
-        .clk(clk),
-        .reset(reset),
-        .num(disp_nums),
-        .an0(an0), .an1(an1), .an2(an2), .an3(an3),
-        .an4(an4), .an5(an5), .an6(an6), .an7(an7),
-        .segA(segA), .segB(segB), .segC(segC), .segD(segD),
-        .segE(segE), .segF(segF), .segG(segG)
-    );
 
 endmodule
 
