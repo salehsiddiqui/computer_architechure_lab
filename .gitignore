@@ -3,6 +3,7 @@ run/*
 local/*
 Single_Cycle/*
 Three_Stage_Pipeline/*
+FPGA_Local/*
 questa/
 vivado/
 *.mpf
